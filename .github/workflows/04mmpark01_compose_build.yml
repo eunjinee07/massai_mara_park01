@@ -21,4 +21,17 @@ jobs:
                 docker compose up -d 
                 sleep 30
                 docker ps
-                docker logs 
+                docker compose logs 
+                
+            - name: Run automated test #1
+              run: |
+                curl http://localhost:8080 || exit 1 
+             
+            - name: Run automated test #2
+              run: |
+                curl http://localhost:8080/images || exit 1                
+              
+            - name: Run automated test #3
+              run: |
+                curl http://localhost:8080/animal || exit 1 
+
