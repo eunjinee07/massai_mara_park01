@@ -25,3 +25,22 @@ jobs:
             - name: Logout from docker hub
               if: always()
               run: docker logout
+
+            - name: Run docker container
+              run: |
+                docker run -d --name mmpark01 -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/massai_mara:v1
+                docker ps
+                docker logs mmpark01
+
+            - name: Run automated test #1
+              run: |
+                curl http://localhost:8080 || exit 1 
+             
+            - name: Run automated test #2
+              run: |
+                curl http://localhost:8080/images || exit 1                
+              
+            - name: Run automated test #3
+              run: |
+                curl http://localhost:8080/animal || exit 1 
+               
