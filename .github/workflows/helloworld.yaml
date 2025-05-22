@@ -1,0 +1,11 @@
+name: HelloWorld
+
+on:
+    workflow_dispatch
+
+jobs:
+    helloworld:
+        runs-on: ubuntu-22.04
+        steps:
+            - name: print hello message
+              run: echo "hello, github actions!"
