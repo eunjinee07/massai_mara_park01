@@ -28,8 +28,7 @@ jobs:
               run: 
                 docker run -d --name mmpark01 -p 8080:8080 massai_mara:v1 
                 sleep 20 
-
-                docker container ls 
+                docker container ps 
                 docker logs mmpark01 
   
             - name: Run automated test #1
