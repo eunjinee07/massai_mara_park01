@@ -1,0 +1,24 @@
+name: Massai Mara Park 01 Compose Build
+
+on:
+    workflow_dispatch
+
+jobs:
+    mmpark01_compose_build:
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - name: Check docker compose version
+              run: docker compose version
+
+            - name: Build with docker compose
+              run: docker compose build
+
+            - name: run with docker compose
+              run: |
+                docker compose up -d 
+                sleep 30
+                docker ps
+                docker logs 
